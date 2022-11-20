@@ -94,4 +94,18 @@ export async function LoginApi(username, password) {
     return data;
   }
 
+  export async function getAxiosCustomer(url,id) {
+    const config = {
+      method: "get",
+      port: 443,
+      url: `https://api.paystack.co/${url}/${id}`,
+      headers: {
+        Authorization: `Bearer sk_test_3f9098ba9d670cbe94ba0e47803c88182ca476c9`,
+        'Content-Type': 'application/json'
+      },
+    };
+    let { data } = await axios(config);
+    return data;
+  }
+
   
