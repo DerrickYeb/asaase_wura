@@ -198,7 +198,7 @@ const SellLand = () => {
                                                 <Form.Group className="form-group">
                                                 <Form.Label htmlFor='landSize'>Land Size</Form.Label>
                                                 <select {...register("landSize")}  className="form-select" id="landSize">
-                                                    <option>Select your size</option>
+                                                    <option>Select land size</option>
                                                     <option>100 x 100ft</option>
                                                     <option>100 x 70ft</option>
                                                     <option>74 ft x 38 ft</option>
@@ -208,9 +208,9 @@ const SellLand = () => {
                                                 </select>
                                                 </Form.Group>
                                                 <div className="col-md-6">
-                                                    <Form.Label htmlFor="choices-single-default">Select Input New</Form.Label>
+                                                    <Form.Label htmlFor="choices-single-default">Select Location</Form.Label>
                                                     <select {...register("location")}  className="form-select" id="exampleFormControlSelect1">
-                                                        <option>Select your age</option>
+                                                        <option>Select location</option>
                                                         <option>Accra</option>
                                                         <option>Adenta</option>
                                                         <option>Kasoa</option>

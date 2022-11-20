@@ -3,7 +3,10 @@ import Registerland from '../src/modules/Land/RegisterLand'
 
 const land = () => {
   return (
-    <Registerland/>
+    // <Registerland/>
+    <div>
+      <h1>Under construction</h1>
+    </div>
   )
 }
 

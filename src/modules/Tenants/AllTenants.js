@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {Row,Col,Image} from 'react-bootstrap'
 import Card from '../../components/Card'
 
@@ -10,6 +10,7 @@ import shap4 from '../../assets/images/shapes/04.png'
 import shap5 from '../../assets/images/shapes/05.png'
 import shap6 from '../../assets/images/shapes/06.png'
 import Link from 'next/link'
+import { getAxiosInvoice } from '../../hooks/axiosRequest'
 
 
 const userlist = [
@@ -114,7 +115,27 @@ const userlist = [
     }
  ]
 
+
+
+
 const AllTenants = () => {
+   const[data,setData] = useState([])
+
+   
+   const AllTenants = async() => {
+      await getAxiosInvoice("customer").then(res => {
+         setData(res.data)
+         console.log(res.data)
+         console.log(res)
+      }).catch(err => {
+         console.log(err)
+      })
+   }
+
+useEffect(() => {
+   AllTenants()
+},[])
+
   return (
     <>
        <div>
@@ -132,29 +153,28 @@ const AllTenants = () => {
                            <thead>
                               <tr className="ligth">
                                  <th>ID</th>
-                                 <th>Size</th>
                                  <th>Tenant</th>
-                                 <th>Amount</th>
-                                 <th>Size</th>
-                                 <th>Location</th>
+                                 <th>Email</th>
+                                 <th>Phone</th>
+                                 {/* <th>Location</th>
                                  <th>Status</th>
                                  <th>Date Purchased</th>
-                                 <th min-width= "100px">Action</th>
+                                 <th min-width= "100px">Action</th> */}
                               </tr>
                            </thead>
                            <tbody>
                            { 
-                              userlist.map((item,idx) => (
+                              data.map((item,idx) => (
                               <tr key={idx}>
-                                 <td className="text-center"><Image className="bg-soft-primary rounded img-fluid avatar-40 me-3" src={item.img} alt="profile"/></td>
-                                 <td>{item.name}</td>
-                                 <td>{item.phone}</td>
+                                 {/* <td className="text-center"><Image className="bg-soft-primary rounded img-fluid avatar-40 me-3" src={item.img} alt="profile"/></td> */}
+                                 <td>{item.id}</td>
+                                 <td>{`${item.first_name} ${item.last_name}`}</td>
                                  <td>{item.email}</td>
-                                 <td>{item.country}</td>
-                                 <td><span className={`badge ${item.color}`}>{item.status}</span></td>
+                                 <td>{item.phone}</td>
+                                 {/* <td><span className={`badge ${item.color}`}>{item.status}</span></td>
                                  <td>{item.company}</td>
-                                 <td>{item.joindate}</td>
-                                 <td>
+                                 <td>{item.joindate}</td> */}
+                                 {/* <td>
                                     <div className="flex align-items-center list-user-action">
                                        <Link className="btn btn-sm btn-icon btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add" href="#">
                                           <span className="btn-inner">
@@ -185,7 +205,7 @@ const AllTenants = () => {
                                           </span>
                                        </Link>{' '}
                                     </div>
-                                 </td>
+                                 </td> */}
                               </tr>))}
                            </tbody>
                         </table>
