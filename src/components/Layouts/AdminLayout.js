@@ -96,7 +96,7 @@ const Default = ({children}) => {
                         {children}
                     {/* </div> */}
                 </main>
-            <Settingoffcanvas  />
+            {/* <Settingoffcanvas  /> */}
         </>
     )
 }
